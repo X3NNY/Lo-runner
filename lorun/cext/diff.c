@@ -21,11 +21,47 @@
 
 int equalStr(const char *s, const char *s2) {
     while (*s && *s2) {
+        if ((*s == ' ' || *s == '\r' || *s == '\n' || *s == '\t') && (*s2 == ' ' || *s2 == '\r' || *s2 == '\n' || *s2 == '\t')) {
+            int flag = 0;
+            s++;
+            while (*s) {
+                if (*s != ' ' && *s != '\r' && *s != '\n' && *s != '\t') {                           flag++;
+                    break;
+                }
+                ++s;
+            }
+            s2++;
+            while (*s2) {
+                if (*s2 != ' ' && *s2 != '\r' && *s2 != '\n' && *s2 != '\t') {                       flag++;
+                    break;
+                }
+                ++s2;
+            }
+            if (flag == 0) break;
+            else if (flag == 1) return 1;
+        }
         if (*s++ != *s2++) {
             return 1;
         }
     }
-
+    int flag = 0;
+    while (*s) {
+        if (*s != ' ' && *s != '\r' && *s != '\n' && *s != '\t') {
+                flag++;
+                break;
+        }
+        ++s;
+    }
+    while (*s2) {
+        if (*s2 != ' ' && *s2 != '\r' && *s2 != '\n' && *s2 != '\t') {
+                flag++;
+                break;
+        }
+        ++s2;
+    }
+    if (flag >0) {
+            return 1;
+    }
     return 0;
 }
 
