@@ -1,3 +1,10 @@
+# Fork Description
+I overridden the `int equalstr(const char *s, const char *s2)` function in diff.c,Because the original version of the comparison function will cause PE errors in the actual use process, and these errors are not necessarily caused by the problem of the submitter, it is likely to be caused by the negligence of the author, or even by the OS's different standards for newline characters.
+
+Now the blank characters at the end are no longer compared, and for further convenience of the submitter, when two string pointers match to the blank characters at the same time, they will jump to the position of the next non blank character to start the comparison. The committers now don't have to think about handling some spaces or line breaks.
+
+The above white space characters include the white space characters, '\r', '\n' and '\t'
+
 Loco program runner core
 ========================
 
