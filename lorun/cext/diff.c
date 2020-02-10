@@ -101,7 +101,7 @@ int checkDiff(int rightout_fd, int userout_fd, int *result) {
         RAISE1("mmap right filure");
     }
 
-    if ((userout_len == rightout_len) && equalStr(userout, rightout) == 0) {
+    if (equalStr(userout, rightout) == 0) {
         munmap(userout, userout_len);
         munmap(rightout, rightout_len);
         RETURN(AC);
